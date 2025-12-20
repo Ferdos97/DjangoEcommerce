@@ -1,0 +1,27 @@
+User
+-
+id PK int
+name string
+
+
+Product
+-
+id PK int
+name string
+price money
+stock int
+
+
+Order
+-
+id PK int
+order_item FK >- OrderItems.id 
+user_id int FK >- User.id
+total_cost money
+
+
+OrderItems
+-
+id PK int
+product
+amount
