@@ -1,5 +1,32 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block title %}
-    <title>Contact Us</title>
+    <title>PetShop | Contact US</title>
 {% endblock title %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center mx-auto px-2">
+            <div class="col-12 col-md-8 col-lg-5 border border-2 border-secondary rounded-4 py-5 px-3">
+                <form action= "/form-submitted" method="GET">
+                    <div>
+                        <label class="form-label" for="fullname">Full name</label>
+                        <input class="form-control"  type="text" id="fullname" name="fullname">
+                    </div>
+                    <div>
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-control"  type="email" id="email" name="email">
+                    </div>
+                    <div>
+                        <label class="form-label" for="msg">Message</label>
+                        <textarea class="form-control"  id="msg" name="msg" cols=30 rows=10></textarea>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary mt-4 px-3 float-end" type="submit">Send</button>
+                    </div>
+                </form>
+        </div>
+        </div>
+    </div>
+    
+{% endblock content %}

@@ -13,6 +13,10 @@ def about_us_page(request):
 def contact_us_page(request):
     return render(request,'blog/contact-us.html', {})
 
+def form_submitted_page(request):
+    print(request.GET['email'])
+    return render(request, 'blog/contact-us.html', {})
+
 def store_page(request):
     products = Product.objects.all()
     if products:

@@ -1,17 +1,45 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% load static %}
 
 {% block title %}
-    <title> Store</title>
+    <title>PetShop | Store</title>
 {% endblock title %}
-
 
 {% block content %}
     <h1>
         Store new page
-        {% for product in products%}
-        <h1>
-            {{product.name}}
-        </h1>
-        {% endfor %}
     </h1>
+    <div class="d-flex gap-3 px-4">
+        {% for product in products %}
+            <div class="card" style="width: 18rem;">
+
+{% if product.image %}
+    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+{% else %}
+    <img src="{% static 'img/no-image.png' %}" class="card-img-top" alt="No image">
+{% endif %}
+
+{#  we should call load static first #}
+
+
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{product.name}}
+                    </h5>
+                    <p class="card-text">
+                        {{product.description}}
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn btn-primary">
+                            ${{product.price}}
+                        </a>
+                        <a href="#" class="btn btn-outline-primary">
+                            Stock: {{product.stock}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}
