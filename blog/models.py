@@ -8,3 +8,10 @@ class Product(models.Model):
     image = models.ImageField(upload_to='product', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class ContactUs(models.Model):
+    fullname = models.CharField(max_length=20)
+    email = models.EmailField(max_length=254)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

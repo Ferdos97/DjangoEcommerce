@@ -8,7 +8,15 @@
     <div class="container mt-5">
         <div class="row justify-content-center mx-auto px-2">
             <div class="col-12 col-md-8 col-lg-5 border border-2 border-secondary rounded-4 py-5 px-3">
-                <form action= "/form-submitted" method="GET">
+                
+            {% if status == 'successful' %}
+                <p class='alert alert-success'>
+                    {{ status }}
+                </p>
+            {% endif %}
+
+                <form action= "" method="POST">
+                    {% csrf_token %}
                     <div>
                         <label class="form-label" for="fullname">Full name</label>
                         <input class="form-control"  type="text" id="fullname" name="fullname">
