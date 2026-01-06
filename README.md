@@ -1,2 +1,2 @@
 # DjangoEcommerce
-This is a Django Project.
+A repo for django project and files.
