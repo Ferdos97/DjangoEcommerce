@@ -15,5 +15,4 @@ class ContactUsAdmin(admin.ModelAdmin):
     list_display = ['id','fullname', 'email', 'message']
     ordering = ['id']
 
-
 admin.site.register(ContactUs, ContactUsAdmin)
