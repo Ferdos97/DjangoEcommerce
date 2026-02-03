@@ -1,0 +1,100 @@
+docs.djangoproject.com/
+
+*** in models, data type for gt & lt should be numeric. ***
+
+------------------------------------------------------
+
+
+from blog.models import Product
+from django.models import Q
+
+------------------------------------------------------
+
+** list of all member in db:
+products = Product.objects.all()
+products = Product.objects.all().order_by('id')
+
+------------------------------------------------------
+
+
+** to get one member in db
+product = Product.objects.get()
+
+------------------------------------------------------
+
+
+filtered_products = Product.objects.filter(price__gte = 300)
+filtered_products = Product.objects.filter(id__gte = 3)
+filtered_products = Product.objects.filter(name_startwith = 'iphone')
+
+------------------------------------------------------
+
+
+gt = greater than
+gte = greater than or equal
+lt = less than
+lte = less than or equal
+startwith = starts with sth (case sensitive)
+istartwith = starts with sth (case insensitive)
+
+------------------------------------------------------
+
+
+*** filter with And and or:
+product = Product.objects.get(name__istartwith = 'iphone', price__gt = 300)
+product = Product.objects.getQ(name__istartwith = 'iphone') | Q(price__gt = 300)
+
+
+product = Product.objects.get(description__contains='iphone')
+product = Product.objects.get(created_at__year='2026').values('id')[:5]
+product = Product.objects.get(created_at__year__gt='2026')
+product = Product.objects.filter(pk__in=[1, 3, 5]).values("id")
+product = Product.objects.filter(pk__in=[1, 3, 5]).values("name")
+product = Product.objects.filter(description__isnull=True).values('id')
+
+------------------------------------------------------
+
+
+** Create:
+
+new_product = Product.objects.create(
+    name = 'new iphone',
+    price = 112,
+    stock = 8
+)
+
+offset & limit
+
+------------------------------------------------------
+
+** Delete:
+
+result = Product.objects.get(id = 5).delete()
+
+------------------------------------------------------
+
+** Update:
+
+item4 = Product.objects.get(id=4)
+item4.name = 'new name'
+item4.save()
+
+------------------------------------------------------
+
+
+** Change name of all:
+
+result = Product.objects.all()
+for item in result:
+    item.name = 'new name'
+    item.save()
+
+
+item4 = Product.objects.get(id=4)
+item4.name = 'new name'
+item4.save()
+
+------------------------------------------------------
+
+
+orm relation
