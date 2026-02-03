@@ -7,9 +7,7 @@
 {% endblock title %}
 
 {% block content %}
-
 <div class="d-flex gap-3 px-4">
-    {% for product in products %}
     <div class="card" style="width: 18rem;">
 
         {% if product.image %}
@@ -17,8 +15,6 @@
         {% else %}
         <img src="{% static 'img/no-image.png' %}" class="card-img-top" alt="No image">
         {% endif %}
-
-        {# we should call load static first #}
 
 
         <div class="card-body">
@@ -38,6 +34,5 @@
             </div>
         </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock content %}

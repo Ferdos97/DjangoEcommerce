@@ -7,6 +7,8 @@ urlpatterns = [
     path('card/', views.card_page),
     path('about-us/', views.about_us_page),
     path('contact-us/', views.contact_us_page),
+    path('products/<int:id>', views.product_details_page),
+
 ]
 
 from django.conf import settings

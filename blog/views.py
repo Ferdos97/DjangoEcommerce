@@ -10,7 +10,7 @@ def about_us_page(request):
     return render(request,'blog/about-us.html', {})
 
 def contact_us_page(request):
-    status = ''
+    status = 'test'
     if request.method == 'POST':
         print(request.POST['fullname'])
         print(request.POST['email'])
@@ -26,7 +26,6 @@ def contact_us_page(request):
         except:
             print('error: contact us failed')
             status = 'an error happened'
-
     return render(request, 'blog/contact-us.html', {'status': status})
 
 def store_page(request):
@@ -41,3 +40,14 @@ def store_page(request):
 
 def card_page(request):
     return render(request,'blog/card.html', {})
+
+def product_details_page(request, id):
+    product = Product.objects.get(id=id)
+    if product:
+        context = {
+        'product' : product,
+        'id': id
+        }
+    else:
+        context = {}
+    return render(request,'blog/product_details.html', context)
