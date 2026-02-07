@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='container mx-auto mt-5'>
+    <div class='mx-auto' style='max-width:660px'>
+        <h1 class="my-5 text-center">Logout</h1>
+        <p>You are going to leave the site, Are you sure?</p>
+        <form method='POST' action="{% url 'logout-page' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
