@@ -27,21 +27,20 @@
             <div>
 
                 {% if user.is_authenticated %}
-                <a href="{% url 'logout-page' %}" class='btn btn-danger'>
-                    Logout
-                </a>
+                    <a href="{% url 'logout-page' %}" class='btn btn-danger'>
+                        Logout
+                    </a>
 
                 {% else %}
-                <a href="{% url 'login-page' %}" class='btn btn-primary'>
-                    Login
-                </a>
+                    <a href="{% url 'login-page' %}" class='btn btn-primary'>
+                        Login
+                    </a>
 
-                <a href="{% url 'register-page' %}" class='btn btn-primary'>
-                    Register
-                </a>
+                    <a href="{% url 'register-page' %}" class='btn btn-primary'>
+                        Register
+                    </a>
                 {% endif %}
             </div>
         </div>
     </div>
 </nav>
-

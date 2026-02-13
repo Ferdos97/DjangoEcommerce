@@ -17,3 +17,10 @@ class ContactUs(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     class Meta:
         verbose_name_plural = 'Contact Us'
+
+class Order(models.Model):
+    User = models.ForeignKey('User', on_delete=models.CASCADE, related_name='order')
+    product = models.ManyToManyField('Product', related_name='order')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
