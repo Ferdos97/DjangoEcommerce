@@ -23,4 +23,3 @@ class Order(models.Model):
     product = models.ManyToManyField('Product', related_name='order')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
