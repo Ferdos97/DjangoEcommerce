@@ -1,4 +1,6 @@
+import uuid 
 from django.db import models
+from accounts.models import CustomUser
 
 class Product(models.Model):
     name = models.CharField(max_length=250)
@@ -8,6 +10,9 @@ class Product(models.Model):
     image = models.ImageField(upload_to='product', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.name} $ {self.price}"
 
 class ContactUs(models.Model):
     fullname = models.CharField(max_length=20)
@@ -19,7 +24,21 @@ class ContactUs(models.Model):
         verbose_name_plural = 'Contact Us'
 
 class Order(models.Model):
-    User = models.ForeignKey('User', on_delete=models.CASCADE, related_name='order')
-    product = models.ManyToManyField('Product', related_name='order')
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='order')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    class Meta:
+        verbose_name_plural = 'Orders'
+
+
+class OrderItems(models.Model):
+    order = models.ForeignKey('Order', on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='items')
+    amount = models.PositiveIntegerField()
+    # created_at = models.DateTimeField(auto_now_add=True)
+    # updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'Order Items'
+

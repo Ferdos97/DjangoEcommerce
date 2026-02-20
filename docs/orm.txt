@@ -89,4 +89,7 @@ item4.save()
 
 ------------------------------------------------------
 
+MUST READ DOCUMENTS:
+
 orm relation
+otp
